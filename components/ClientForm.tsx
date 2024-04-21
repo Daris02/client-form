@@ -1,8 +1,8 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -14,15 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
-const formSchema = z.object({
-  name: z.string().min(5, {
-    message: "Username must be at least 5 characters.",
-  }),
-  email: z.string().email(),
-  number: z.number(),
-  message: z.string()
-})
+import { formSchema } from "@/utils/types/clientData"
 
 export default function ClientForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,7 +38,7 @@ export default function ClientForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input {...field} />
               </FormControl>
             <FormMessage />
           </FormItem>
@@ -60,7 +52,7 @@ export default function ClientForm() {
             <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                <Input placeholder="email" {...field} />
+                    <Input {...field} />
                 </FormControl>
             </FormItem>
             )}
@@ -73,7 +65,7 @@ export default function ClientForm() {
             <FormItem>
                 <FormLabel>Number</FormLabel>
                 <FormControl>
-                    <Input placeholder="number" {...field} />
+                    <Input {...field} />
                 </FormControl>
             </FormItem>
             )}
@@ -86,7 +78,7 @@ export default function ClientForm() {
             <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                    <Input placeholder="message" {...field} />
+                    <Input {...field} />
                 </FormControl>
                 <FormMessage />
             </FormItem>
