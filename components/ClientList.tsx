@@ -1,15 +1,4 @@
-import { useState } from "react"
-
-export default function ClientList() {
-    const [clients, setClients] = useState([
-        {
-            name: "John Doe",
-            email: "john@gmail.com",
-            number: "0330010010",
-            message: "test example"
-        }
-    ]);
-
+export default function ClientList({ clients }) {
     return (
         <>
             <ul>

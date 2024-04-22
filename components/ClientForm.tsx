@@ -1,9 +1,9 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-import { useForm } from "react-hook-form"
-import { Button } from "@/components/ui/button"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,11 +12,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { formSchema } from "@/utils/types/clientData"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { formSchema } from "@/utils/types/clientData";
+import { useRouter } from "next/navigation";
 
 export default function ClientForm() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -26,6 +28,7 @@ export default function ClientForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
+    router.push("/client")
   }
 
   return (
